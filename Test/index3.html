@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Language Website</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light gray background */
+            color: #333;
+        }
+        /* Custom styling for language buttons */
+        .lang-button {
+            @apply px-4 py-2 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-colors duration-200 shadow-md;
+        }
+        .lang-button:focus {
+            @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+        }
+        /* Hide the default Google Translate branding bar */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        body {
+            top: 0px !important; /* Adjust body top margin if Google Translate adds it */
+        }
+        /* Ensure the Google Translate dropdown itself is not visible */
+        #google_translate_element .goog-te-combo {
+            display: none !important;
+        }
+        #google_translate_element .goog-te-gadget {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
+
+    <header class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-8 flex flex-col sm:flex-row justify-between items-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">My Awesome Website</h1>
+        <div id="language-buttons" class="flex flex-wrap gap-2 flex-shrink-0">
+            <!-- Language buttons will be generated here by JavaScript -->
+        </div>
+        <!-- Hidden div for Google Translate to attach to -->
+        <div id="google_translate_element" style="display: none;"></div>
+    </header>
+
+    <main class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Welcome to Our Site!</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+                This is a sample paragraph demonstrating the content on your website. You can replace this text with your own articles, descriptions, or any information you wish to share with your visitors. The language buttons above will allow users to translate this content into their preferred language.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+                We aim to provide a seamless experience for a global audience. Feel free to explore the different sections and utilize the translation tool for better understanding.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">About Us</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+                Our mission is to deliver high-quality information and services to users worldwide. We believe in breaking down language barriers to make knowledge accessible to everyone.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+                Founded in 2023, we have grown into a dedicated team committed to innovation and user satisfaction. We are constantly working on new features and improvements.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Contact Information</h2>
+            <p class="text-gray-600 leading-relaxed">
+                If you have any questions or feedback, please do not hesitate to reach out to us. You can find our contact details on the 'Contact' page, or simply send us an email at <a href="mailto:info@example.com" class="text-blue-600 hover:underline">info@example.com</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="w-full max-w-4xl text-center text-gray-500 mt-8">
+        <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+    </footer>
+
+    <!-- Google Translate API Script and Custom Button Logic -->
+    <script type="text/javascript">
+        // Define the languages for our custom buttons
+        const languages = {
+            'en': 'English',
+            'es': 'Español',
+            'fr': 'Français',
+            'ja': '日本語'
+        };
+
+        // Function to create and append language buttons
+        function createLanguageButtons() {
+            const buttonContainer = document.getElementById('language-buttons');
+            // Clear existing buttons to prevent duplicates on re-initialization
+            buttonContainer.innerHTML = '';
+
+            for (const code in languages) {
+                const button = document.createElement('button');
+                button.className = 'lang-button'; // Apply Tailwind classes for styling
+                button.textContent = languages[code];
+                button.setAttribute('data-lang', code); // Store the language code
+
+                button.addEventListener('click', function() {
+                    // Check if the Google Translate API is loaded and ready
+                    if (window.google && window.google.translate && window.google.translate.TranslateElement) {
+                        const googleSelect = document.querySelector('.goog-te-combo');
+                        if (googleSelect) {
+                            googleSelect.value = this.getAttribute('data-lang');
+                            // Dispatch a change event to trigger the translation
+                            googleSelect.dispatchEvent(new Event('change'));
+                        } else {
+                            console.error('Google Translate dropdown (.goog-te-combo) not found.');
+                            // Fallback if the combo box isn't found immediately (e.g., if it loads later)
+                            // This might not always work, but it's a common pattern to try.
+                            // The Google Translate API sometimes exposes a direct translate function.
+                            // However, the programmatic way is usually through the hidden select.
+                            // A small delay might help in some edge cases.
+                            setTimeout(() => {
+                                const retryGoogleSelect = document.querySelector('.goog-te-combo');
+                                if (retryGoogleSelect) {
+                                    retryGoogleSelect.value = this.getAttribute('data-lang');
+                                    retryGoogleSelect.dispatchEvent(new Event('change'));
+                                }
+                            }, 100); // Small delay
+                        }
+                    } else {
+                        console.error('Google Translate API not fully loaded.');
+                    }
+                });
+                buttonContainer.appendChild(button);
+            }
+        }
+
+        // Function to initialize Google Translate
+        function googleTranslateElementInit() {
+            // Initialize the Google Translate widget, attaching it to the hidden div.
+            // We still need to pass a layout, even if the element is hidden.
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', // Original language of your page
+                autoDisplay: false, // Prevents the default dropdown from showing initially
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+
+            // After Google Translate initializes, create the custom buttons.
+            // This ensures the Google Translate environment is ready.
+            createLanguageButtons();
+
+            // Hide the Google Translate banner if it appears
+            const hideGoogleTranslateBanner = () => {
+                const bannerFrame = document.querySelector('.goog-te-banner-frame.skiptranslate');
+                if (bannerFrame) {
+                    bannerFrame.style.display = 'none';
+                    document.body.style.top = '0px'; // Reset body top margin
+                }
+            };
+
+            // Use a MutationObserver to catch when the banner is added to the DOM
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.addedNodes.length) {
+                        hideGoogleTranslateBanner();
+                    }
+                });
+            });
+
+            // Start observing the body for changes
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            // Also try to hide it immediately in case it's already there
+            hideGoogleTranslateBanner();
+        }
+
+        // Load the Google Translate API script
+        // This script will call `googleTranslateElementInit` once it's loaded.
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        document.head.appendChild(script);
+
+    </script>
+
+</body>
+</html>

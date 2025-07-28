@@ -1,0 +1,235 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<script>
+  const toggleBtn = document.getElementById('mode-toggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Change button text/icon for better UX
+    if(document.body.classList.contains('dark-mode')) {
+      toggleBtn.textContent = '☀️ ライトモード切替';
+    } else {
+      toggleBtn.textContent = '🌙 ダークモード切替';
+    }
+  });
+</script>
+
+<body>
+    <header>
+        <div class="hero">
+  <nav id="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
+
+<div class="content">
+  <h1>Welcome to Our Website</h1>
+  <p>Scroll down to see the navbar change style and become fixed.</p>
+  <!-- More content -->
+</div>
+<button id="mode-toggle" style="position: fixed; top: 10px; right: 10px; z-index: 2000;">
+  🌙 ダークモード切替
+</button>
+
+<script>
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {  // Adjust scroll threshold as needed
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+</script>
+
+    </header>
+    <canvas id="waterChart" width="400" height="400" data-aos="fade-up"></canvas>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 1000,  // animation duration in ms
+    once: true       // animation happens only once
+  });
+
+  const ctx = document.getElementById('waterChart').getContext('2d');
+  const waterChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: [
+        'Bathroom (Shower & Bath)',
+        'Toilet',
+        'Laundry',
+        'Kitchen',
+        'Other'
+      ],
+      datasets: [{
+        label: 'Water Usage',
+        data: [40, 25, 15, 10, 10],
+        backgroundColor: [
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(75, 192, 192, 0.7)',
+          'rgba(255, 206, 86, 0.7)',
+          'rgba(153, 102, 255, 0.7)',
+          'rgba(255, 99, 132, 0.7)'
+        ],
+        borderColor: [
+          'rgba(54, 162, 235, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 99, 132, 1)'
+        ],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.label + ': ' + ctx.parsed + '%'
+          }
+        }
+      }
+    }
+  });
+</script>
+<table class="modern-table" style="max-width: 600px; margin: 40px auto; border-collapse: separate; border-spacing: 0 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden;">
+  <thead>
+    <tr data-aos="fade-right">
+      <th>節約項目 (Saving Item)</th>
+      <th>効果 (Effect)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-aos="fade-left" data-aos-delay="0">
+      <td>シャワー時間短縮</td>
+      <td>年間約10%の節水</td>
+    </tr>
+    <tr data-aos="fade-right" data-aos-delay="100">
+      <td>トイレの節水型使用</td>
+      <td>約30%の水道代削減</td>
+    </tr>
+    <tr data-aos="fade-up" data-aos-delay="200">
+      <td>洗濯回数の見直し</td>
+      <td>月間5%の節水</td>
+    </tr>
+    <tr data-aos="fade-up" data-aos-delay="300">
+      <td>食器洗いの節水</td>
+      <td>約15%の水節約</td>
+    </tr>
+  </tbody>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 700,
+    easing: 'ease-out',
+    once: true,
+  });
+</script>
+<section class="white-section">
+  <h2>White Section</h2>
+  <p>This section has a white background.</p>
+</section>
+
+<section class="gray-section">
+  <h2>Gray Section</h2>
+  <p>This section has a gray background.</p>
+</section>
+
+<h2>Select checklist items:</h2>
+<form id="checklist">
+  <label><input type="checkbox" value="1" /> 1</label>
+  <label><input type="checkbox" value="2" /> 2</label>
+  <label><input type="checkbox" value="3" /> 3</label>
+  <label><input type="checkbox" value="4" /> 4</label>
+  <label><input type="checkbox" value="5" /> 5</label>
+</form>
+
+<div id="result">Percentage: 0%</div>
+
+<script>
+  const checklist = document.getElementById('checklist');
+  const result = document.getElementById('result');
+
+  checklist.addEventListener('change', () => {
+    const checked = Array.from(checklist.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(cb => cb.value);
+
+    // Sort to simplify matching
+    checked.sort();
+
+    let percent = 0;
+
+    // Define your conditions
+    if (checked.length === 5 &&
+        checked.every((v,i) => v == (i+1).toString())) {
+      // All 1-5 checked
+      percent = 100;
+    } else if (checked.length === 2 &&
+               checked.includes('1') && checked.includes('5')) {
+      percent = 30;
+    } else if (checked.length === 2 &&
+               checked.includes('2') && checked.includes('4')) {
+      percent = 45;
+    } else {
+      percent = 0; // Or show other message
+    }
+
+    result.textContent = `Percentage: ${percent}%`;
+  });
+</script>
+<section class="side-by-side">
+  <h1>Title on the Left</h1>
+  <p>This paragraph will be on the right side, aligned next to the title.</p>
+</section>
+<section>
+<div class="toc-cute">
+  <h2>目次</h2>
+  <ul>
+    <li>
+      <span class="num">1</span>
+      <a href="#">家電製品別の電力消費の割合は？</a>
+      <span class="icon">↓</span>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <a href="#">上手なエアコンの使いかたは？</a>
+      <span class="icon">↓</span>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <a href="#">上手な冷蔵庫の使いかたは？</a>
+      <span class="icon">↓</span>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <a href="#">上手な照明の使いかたは？</a>
+      <span class="icon">↓</span>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <a href="#">家電や生活習慣の工夫のしかたは？</a>
+      <span class="icon">↓</span>
+    </li>
+  </ul>
+</div>
+</section>
+</body>
+</html>

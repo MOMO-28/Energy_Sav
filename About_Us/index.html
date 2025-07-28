@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私たちについて</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&family=Sawarabi+Gothic&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="index.js">
+</head>
+<body>
+    <header>
+        <div class="over">
+        <nav id="navbar">
+            <h1 ><a href="/Main_Page/index.html">Energy Savings</a></h1>
+            <ul>
+                <li><a href="/Main_Page/index.html">ホームページ</a></li>
+                <li><a href="/Electric_Saving/index.html">節電 </a></li>
+                <li><a href="/Gas_Saving/index.html">節ガス</a></li>
+                <li><a href="/Water_saving/index.html">みずの節約</a></li>
+              </ul>
+            </nav>
+            <div class="typing" id="typing"></div>     
+        </div>
+        <script src="script.js"></script>
+        <script>
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+              if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+              } else {
+                navbar.classList.remove('scrolled');
+              }
+            });
+        </script>
+    </header>
+    <section class="aboutus-class">
+        <div class="font-sample" style="font-family: 'Sawarabi Mincho', serif;">
+        <h1>私たちについて</h1>
+        <h3>私たちの使命（Mission）</h3>
+        <p class="aboutus-class-p">
+            私たちは、地球環境の保全と持続可能な未来を築くために、省エネルギーの重要性を深く理解し、日々の生活や産業におけるエネルギーの効率的な利用を推進しています。限りある資源を大切にし、環境負荷を軽減する取り組みを広く社会に広めることを使命としています。
+        </p>
+        <h3>私たちのビジョン（Vision）</h3>
+        <p class="aboutus-class-p">
+            私たちは、誰もが快適で豊かな暮らしを享受しながら、環境に配慮した社会を実現する未来を目指しています。すべての人々が省エネルギーの価値を理解し、積極的に行動することで、持続可能で調和のとれた地球環境が次世代へと受け継がれていく社会を創造します。
+        </p>
+        <h3>私たちの活動内容（What we do）</h3>
+        <p class="aboutus-class-p">
+            私たちは、省エネルギーに関する最新の情報提供や実践的なアドバイス、節電・節ガス・節水の具体的な方法を紹介しています。また、家庭や企業向けの省エネルギー対策の啓発、環境保護に役立つ技術や製品の紹介を通じて、皆様が無理なく持続可能な生活を送れるようサポートしています。
+        </p>
+        <h3>訪問者へのメッセージ</h3>
+        <p class="aboutus-class-p">
+            私たちのウェブサイトにお越しいただき、誠にありがとうございます。地球の未来を守るためには、一人ひとりの意識と行動が不可欠です。ぜひ一緒に、省エネルギーの取り組みを広げ、より良い社会づくりに貢献していきましょう。皆様のご参加を心よりお待ちしております。
+        </p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-contanier">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="/Main_Page/index.html">ホームページ</a></li>                    
+                    <li><a href="#">私たちについて</a></li>
+                    <li><a href="/Our_Policy/index.html">私たちの方針</a></li>
+                </ul>
+            </div>        
+        </div>
+        <p id="footer_p"> &copy;Copyright by Group(1) 2025</p>
+    </footer>
+</body>
+</html>

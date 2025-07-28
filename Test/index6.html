@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Typing Effect with Multiple Texts</title>
+<style>
+  body {
+    background: #222;
+    color: #0f0;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .typing {
+    font-size: 2rem;
+    border-right: 3px solid #0f0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 24ch; /* fixed width */
+  }
+
+  /* Blinking cursor */
+  @keyframes blink {
+    0%, 50% { border-color: #0f0; }
+    51%, 100% { border-color: transparent; }
+  }
+  .typing {
+    animation: blink 1s step-end infinite;
+  }
+</style>
+</head>
+<body>
+
+<div class="typing" id="typing"></div>
+
+<script>
+  const texts = [
+    "Welcome to the typing demo!",
+    "This text types and erases.",
+    "Multiple lines one by one.",
+    "Enjoy the smooth animation!"
+  ];
+
+  const typingElement = document.getElementById('typing');
+  const typingSpeed = 100; // ms per character
+  const erasingSpeed = 50; // ms per character erasing
+  const delayBetween = 1500; // ms delay between phrases
+
+  let textIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    if (charIndex < texts[textIndex].length) {
+      typingElement.textContent += texts[textIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingSpeed);
+    } else {
+      setTimeout(erase, delayBetween);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, erasingSpeed);
+    } else {
+      textIndex++;
+      if (textIndex >= texts.length) textIndex = 0;
+      setTimeout(type, typingSpeed);
+    }
+  }
+
+  // Start the typing effect
+  setTimeout(type, delayBetween);
+</script>
+
+</body>
+</html>

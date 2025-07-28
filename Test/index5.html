@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Light/Dark Mode Example</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #222222;
+      --link-color: #007acc;
+      --header-bg: linear-gradient(135deg, #6ec1e4, #007acc);
+      --footer-bg: #000000;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    a {
+      color: var(--link-color);
+    }
+    header {
+      background: var(--header-bg);
+      padding: 1rem;
+      color: white;
+      text-align: center;
+    }
+    footer {
+      background-color: var(--footer-bg);
+      color: var(--text-color);
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    button#mode-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--header-bg);
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --link-color: #66aaff;
+      --header-bg: linear-gradient(135deg, #1e3c72, #2a5298);
+      --footer-bg: #222222;
+    }
+  </style>
+</head>
+<body>
+  <button id="mode-toggle">🌙 ダークモード切替</button>
+
+  <header>
+    <h1>皆様気づいてない節電方法とは？</h1>
+  </header>
+
+  <main>
+    <p>ここにページの内容が入ります。背景や文字色が変わるのを試してください。</p>
+    <a href="#">リンクの色も変わります</a>
+  </main>
+
+  <footer>
+    &copy; 2025 Group(1)
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('mode-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')) {
+        toggleBtn.textContent = '☀️ ライトモード切替';
+      } else {
+        toggleBtn.textContent = '🌙 ダークモード切替';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<script>
+            const contentData = {
+                ac: {
+                img: 'https://cdn.pixabay.com/photo/2016/03/26/13/09/air-conditioner-1281827_1280.jpg',
+                text: `
+                    エアコンは家の電気使用量の中で最も多いことが多いです。<br>
+                    設定温度を1度変えるだけで大きな節約になります。フィルター掃除も忘れずに。
+                `,
+                table: {
+                    headers: ['節約ポイント', '効果'],
+                    rows: [
+                    ['設定温度を適切に', '1度の調整で約10％の節約可能'],
+                    ['フィルター掃除', '効率的に冷暖房ができる'],
+                    ['適切な運転モード選択', '無駄な電力消費を抑える']
+                    ]
+                }
+                },
+                fridge: {
+                img: 'https://cdn.pixabay.com/photo/2016/11/18/16/39/fridge-1837436_1280.jpg',
+                text: `
+                    冷蔵庫は適切に使うことで節電できます。<br>
+                    詰め込みすぎないことや、扉の開閉をできるだけ短くすることが大切です。
+                    `,
+                table: {
+                    headers: ['ポイント', '詳細'],
+                    rows: [
+                        ['詰め込みすぎない', '冷気の循環を妨げず効率良く冷やす'],
+                        ['扉の開閉を短く', '冷気の漏れを減らす'],
+                        ['定期的な霜取り', '冷却効率の低下を防ぐ']
+                    ]
+                }
+                },
+                light: {
+                img: 'https://cdn.pixabay.com/photo/2015/07/28/22/13/led-865950_1280.jpg',
+                text: `
+                    LED照明に替えると電気代が大幅に減ります。<br>
+                    不要なときはこまめに消すことが大切です。
+                    `,
+                table: {
+                    headers: ['節電方法', '効果'],
+                    rows: [
+                        ['LED照明に交換', '電気代を約80%削減可能'],
+                        ['こまめに消す', '無駄な消費を防止']
+                    ]
+                }
+                },
+                tv: {
+                    img: 'https://cdn.pixabay.com/photo/2017/08/06/22/58/tv-2597471_1280.jpg',
+                    text: `
+                    テレビは待機電力も意外と多いです。<br>
+                    使わないときはコンセントを抜くのが効果的です。
+                    `,
+                    table: {
+                    headers: ['対策', '詳細'],
+                    rows: [
+                        ['コンセントを抜く', '待機電力を完全にカット'],
+                        ['テレビの設定を省エネモードに', '消費電力を減らす']
+                    ]
+                    }
+                },
+                toilet: {
+                    img: 'https://cdn.pixabay.com/photo/2017/11/17/20/04/toilet-2952826_1280.jpg',
+                    text: `
+                    トイレの節水には節水型便器の利用や流す回数の見直しが効果的です。
+                    `,
+                    table: {
+                    headers: ['節水方法', '効果'],
+                    rows: [
+                        ['節水型便器の導入', '水使用量を約50%削減'],
+                        ['流す回数を減らす', '水の無駄遣いを防止']
+                    ]
+                    }
+                },
+                bath: {
+                    img: 'https://cdn.pixabay.com/photo/2016/11/29/08/49/bath-1867996_1280.jpg',
+                    text: `
+                    浴槽のお湯はりは適量に。シャワーの時間を短くすることも節水につながります。
+                    `,
+                    table: {
+                    headers: ['節水ポイント', '詳細'],
+                    rows: [
+                        ['お湯はり量を調整', '無駄なお湯の使用を防ぐ'],
+                        ['シャワー時間を短縮', '水とガスの節約']
+                    ]
+                    }
+                },
+                laundry: {
+                img: 'https://cdn.pixabay.com/photo/2016/03/27/21/15/laundry-1284080_1280.jpg',
+                text: `
+                    洗濯はまとめ洗いで水の使用回数を減らすことが節水のポイントです。<br>
+                    洗濯機の容量に合わせて効率的に使いましょう。
+                `,
+                table: {
+                    headers: ['節水ポイント', '詳細'],
+                    rows: [
+                    ['まとめ洗い', '水や電気の使用回数を減らせる'],
+                    ['洗濯機の容量を守る', '無駄な水や電力消費を防ぐ'],
+                    ['節水モードを利用', '水の使用量を抑える']
+                    ]
+                }
+                },
+                kitchen: {
+                img: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/kitchen-1868412_1280.jpg',
+                text: `
+                    台所での節水は食器洗い時に水を止めるなどの工夫が効果的です。<br>
+                    また、効率的な調理方法もガスや電気の節約につながります。
+                `,
+                table: {
+                    headers: ['節約方法', '効果'],
+                    rows: [
+                    ['水を止めて洗う', '無駄な水の使用を防ぐ'],
+                    ['効率的な調理', 'ガス・電気の使用を抑える'],
+                    ['食洗機の活用', '手洗いより節水になる場合も']
+                    ]
+                }
+                },
+                cooking: {
+                    img: 'https://cdn.pixabay.com/photo/2015/10/12/15/58/cooking-984020_1280.jpg',
+                    text: `
+                    ガスの調理は火加減を適切にし、鍋の蓋を活用することで効率的に使えます。
+                    `,
+                    table: {
+                    headers: ['調理方法', '効果'],
+                    rows: [
+                        ['鍋の蓋を使う', '熱を逃がさず効率アップ'],
+                        ['火加減を調整', 'ガスの無駄遣いを減らす']
+                    ]
+                    }
+                },
+                hotwater: {
+                    img: 'https://cdn.pixabay.com/photo/2017/06/29/09/23/shower-2454523_1280.jpg',
+                    text: `
+                        給湯の設定温度を下げたり、使わない時は給湯器の電源を切ることが節約になります。<br>
+                        シャワーの時間を短くすることも効果的です。
+                    `,
+                    table: {
+                        headers: ['節約ポイント', '詳細'],
+                        rows: [
+                        ['給湯温度の設定を下げる', '無駄なエネルギー消費を減らせる'],
+                        ['使わない時は電源オフ', '待機電力をカット'],
+                        ['シャワー時間を短縮', '水とガスの節約に繋がる']
+                        ]
+                    }
+                    },
+                heating: {
+                img: 'https://cdn.pixabay.com/photo/2016/11/29/06/15/heating-1867752_1280.jpg', // 例：暖房の写真URL
+                text: `暖房は冬の必需品ですが、使いすぎるとガス代が高くなります。<br>
+                        効率よく使うためには断熱対策が効果的です。窓の隙間を塞いだり、カーテンを厚手にするなどが有効です。`,
+                table: {
+                headers: ['対策', '効果'],
+                rows: [
+                ['窓の断熱フィルム貼り', '熱の流出を防ぎ暖房効率アップ'],
+                ['隙間テープ貼り', '冷気の侵入を防ぐ'],
+                ['厚手のカーテン利用', '室内の熱を逃がさない']
+                ]
+                }   
+                },
+
+            };
+
+            const select = document.getElementById('selectItem');
+            const contentDiv = document.getElementById('content');
+
+            function createTable(headers, rows) {
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const trHead = document.createElement('tr');
+                headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                trHead.appendChild(th);
+                });
+                thead.appendChild(trHead);
+                table.appendChild(thead);
+
+                const tbody = document.createElement('tbody');
+                rows.forEach(row => {
+                const tr = document.createElement('tr');
+                row.forEach(cellText => {
+                    const td = document.createElement('td');
+                    td.innerHTML = cellText;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                return table;
+            }
+
+            select.addEventListener('change', () => {
+                const val = select.value;
+                if (!val || !contentData[val]) {
+                contentDiv.innerHTML = '';
+                return;
+                }
+
+                const data = contentData[val];
+                contentDiv.innerHTML = ''; // クリア
+
+                // 画像表示
+                if (data.img) {
+                const img = document.createElement('img');
+                img.src = data.img;
+                img.alt = data.label || '';
+                contentDiv.appendChild(img);
+                }
+
+                // テキスト表示（HTML形式で入れているのでinnerHTML）
+                if (data.text) {
+                const p = document.createElement('p');
+                p.innerHTML = data.text;
+                contentDiv.appendChild(p);
+                }
+
+                // テーブル表示
+                if (data.table) {
+                const table = createTable(data.table.headers, data.table.rows);
+                contentDiv.appendChild(table);
+                }
+            });
+            </script>
+
+
+                        <div class="card" data-aos="fade-up" data-aos-delay="150">
+                <h3 class="index-h3-left">電気を使いすぎている</h3>
+                <p class="index-p-left">電気は使用すればするほど料金が発生します。そのため、電気代が急に高くなった場合は、
+                    日常生活の中で電気の使用頻度が増えている可能性があります。まずは自分の生活スタイルを見直し、
+                    どれくらい電気を使っているかを確認してみましょう。</p>
+                <p class="index-p-left">近年、電気の使用量が増加する主な原因のひとつに、ライフスタイルの変化が挙げられます。
+                    特にテレワークの普及により、自宅で仕事をする時間が増えたことで、
+                    照明やパソコンなどの家電を使用する機会が増え、それに伴って電気代も高くなる傾向があります。</p>
+                <p class="index-p-left">また、「オール電化の住宅に住み替えた」「家族の人数が増えた」といった生活の変化も、
+                    電気の使用量が増える要因となり、電気代の上昇につながるでしょう。</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="150">
+                <h3 class="index-h3-right">家電製品の使い方を工夫していない</h3>
+                <p class="index-p-right">外出中にもかかわらず電気ストーブや扇風機をつけっぱなしにしている」
+                    「夜間、就寝中にもテレビや照明を消さずにつけたままにしている」といった状況では、
+                    当然ながら無駄な電力消費が発生し、電気代が高くなってしまいます。
+                    まずはこうした無意識の電気の使い過ぎに気づくことが大切です。</p>
+                <p class="index-p-right">実は、家電製品の使い方ひとつで、電気代は大きく変わります。日々の生活の中で、
+                    家電を使用する際には「どれだけの時間使っているか」「効率的な使い方ができているか」
+                    などに気を配るようにしましょう。</p>
+                <p class="index-p-right">また、契約している電力会社によっては、時間帯によって電気料金が異なるプランが存在する場合があります。
+                    たとえば、深夜の時間帯の方が割安になるケースなどです。そういった料金体系を理解し、
+                    上手に活用することで、電気代の節約につなげることができます。</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="150">
+                <h1 class="">皆様家の光熱水費について知っていますか</h1>
+                <p>みんな様の家にガス、電気、水道 それぞれが商品によって何パーセントぐらい利用していると思いますか。<br>
+                下記にあるグラフを見ればすぐ分かるを思います。</p>
+                <h2>家のエネルギー使用割合</h2>
+                <div class="charts-wrapper">
+                <div class="chart-container">
+                    <h3>電気の使用場所</h3>
+                    <canvas id="electricChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>水道の使用場所</h3>
+                    <canvas id="waterChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>ガスの使用場所</h3>
+                    <canvas id="gasChart"></canvas>
+                </div>
+                </div>
+                    <script>
+                    const electricData = {
+                        labels: ['エアコン', '冷蔵庫', '照明', 'テレビ', 'その他'],
+                        datasets: [{
+                        label: '電気使用割合',
+                        data: [35, 25, 20, 10, 10], // 合計100%
+                        backgroundColor: [
+                            'rgba(23, 57, 230)',  // 青系
+                            'rgba(230, 195, 23)',  // 黄系
+                            'rgba(255, 99, 132)', // 赤系
+                            'rgba(75, 192, 192)',  // 緑系
+                            'rgba(153, 102, 255)'  // 紫系
+                        ],
+                        borderColor: 'white',
+                        borderWidth: 0.4                    }]
+                        };
+                    const waterData = {
+                        labels: ['トイレ', '風呂', '洗濯', '台所', 'その他'],
+                        datasets: [{
+                        label: '水道使用割合',
+                        data: [30, 40, 15, 10, 5],
+                        backgroundColor: [
+                            'rgba(23, 57, 230)',
+                            'rgba(0, 200, 83)',
+                            'rgba(230, 195, 23)',
+                            'rgba(233, 30, 99)',
+                            'rgba(121, 85, 72)'
+                            ],
+                        borderColor: 'white',
+                        borderWidth: 0.4
+                            }]
+                        };
+                    const gasData = {
+                        labels: ['調理', '給湯', '暖房', 'その他'],
+                        datasets: [{
+                        label: 'ガス使用割合',
+                        data: [50, 30, 15, 5],
+                        backgroundColor: [
+                            'rgba(255, 87, 34)',
+                            'rgba(255, 193, 7)',
+                            'rgba(244, 67, 54)',
+                            'rgba(158, 158, 158)'
+                            ],
+                        borderColor: 'white',
+                        borderWidth: 0.4
+                            }]
+                        };
+                    function createPieChart(ctxId, data) {
+                        const ctx = document.getElementById(ctxId).getContext('2d');
+                        new Chart(ctx, {
+                        type: 'pie',
+                        data: data,
+                        options: {
+                                responsive: true,
+                                plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.parsed + '%';
+                                    }
+                                    }
+                                }
+                                }
+                            }
+                            });
+                        }
+                    createPieChart('electricChart', electricData);
+                    createPieChart('waterChart', waterData);
+                    createPieChart('gasChart', gasData);
+                    </script>
+            </div>
+
+            <section class="three">
+            <h2>項目を選択すると説明が表示されます</h2>
+            <label for="selectItem">項目を選んでください:</label>
+            <select id="selectItem">
+            <option value="">-- 選択してください --</option>
+            <option value="ac">エアコン</option>
+            <option value="fridge">冷蔵庫</option>
+            <option value="light">照明</option>
+            <option value="tv">テレビ</option>
+            <option value="toilet">トイレ</option>
+            <option value="bath">風呂</option>
+            <option value="laundry">洗濯</option>
+            </select>
+            <div id="ac" class="content-item">
+                <h1>光熱水費が高くなる理由と対策</h1>
+                <h3>エアコン</h3>
+                <table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>原因</th>
+      <th>対策</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エアコン</td>
+      <td>
+        ・長時間の使用<br>
+        ・極端な設定温度<br>
+        ・古い機種の使用<br>
+        ・フィルターの汚れ
+      </td>
+      <td>
+        ・冷房は28℃、暖房は20℃に設定<br>
+        ・フィルターを月1回掃除<br>
+        ・サーキュレーターを併用<br>
+        ・断熱カーテンを使う<br>
+        ・古いエアコンは省エネ機種に交換
+      </td>
+    </tr>
+    <tr>
+      <td>冷蔵庫</td>
+      <td>
+        ・中が詰まりすぎている<br>
+        ・ドアの開閉が多い<br>
+        ・古い機種の使用<br>
+        ・設置場所が熱い
+      </td>
+      <td>
+        ・収納は7割程度にする<br>
+        ・ドアの開閉を素早く<br>
+        ・直射日光を避けて設置<br>
+        ・霜を定期的に取る<br>
+        ・省エネ冷蔵庫に買い替え
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+        </section>

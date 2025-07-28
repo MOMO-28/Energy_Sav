@@ -1,0 +1,272 @@
+body, html {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Hero section with photo */
+  .hero {
+    position: relative;
+    height: 500px;
+    background-image: url('/asset/pexels-pixabay-147411.jpg'); /* Replace with your photo */
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Navbar styles */
+  nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    color: white;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0); /* Transparent initially */
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: #f0a500;
+  }
+
+  /* Fixed navbar after scroll */
+  nav.scrolled {
+    position: fixed;
+    background-color: black;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+  }
+
+  nav.scrolled a {
+    color: white;
+  }
+
+  /* Dummy content below hero to allow scrolling */
+  .content {
+    height: 1500px;
+    padding: 20px;
+    background: #f8f8f8;
+  }
+  /* Dummy content below hero to allow scrolling */
+  .content {
+    height: 1500px;
+    padding: 20px;
+    background: #f8f8f8;
+  }
+
+  /* Dummy content below hero to allow scrolling */
+  .content {
+    height: 1500px;
+    padding: 20px;
+    background: #f8f8f8;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  canvas {
+    max-width: 100%;
+  }
+  .modern-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .modern-table thead tr {
+    background-color: #2a9d8f;
+    color: white;
+    text-align: left;
+  }
+
+  .modern-table th, .modern-table td {
+    padding: 15px 20px;
+  }
+
+  .modern-table tbody tr {
+    background-color: #f0f5f5;
+    transition: background-color 0.3s ease;
+    cursor: default;
+  }
+
+  .modern-table tbody tr:hover {
+    background-color: #d1e7e1;
+  }
+  .modern-table tbody tr td:first-child {
+    font-weight: 600;
+  }
+  .white-section {
+    background-color: white;
+    padding: 40px;
+  }
+  .gray-section {
+    background-color: #f0f0f0; /* light gray */
+    padding: 40px;
+  }
+    body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  label {
+    margin-right: 15px;
+    font-size: 18px;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+    .side-by-side {
+    display: flex;
+    gap: 20px;
+    align-items: center; /* vertically center them */
+  }
+  .side-by-side h1 {
+    flex: 1;
+   border-bottom: 3px solid #2a9d8f; /* thickness and color */
+  padding-bottom: 8px;              /* space between text and line */
+  display: inline-block;            /* so the line matches text width */
+  margin: 0; 
+  }
+  .side-by-side p {
+    flex: 2; /* paragraph wider */
+    margin: 0;
+  }
+.toc-cute {
+  width: 400px;
+  margin: 20px auto;
+  background: #fff8f0;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 10px rgba(255, 200, 150, 0.3);
+  font-family: "Arial Rounded MT Bold", "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+}
+
+.toc-cute h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 26px;
+  color: #d2691e; /* チョコレート色 */
+  margin-bottom: 25px;
+}
+
+.toc-cute ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-cute li {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed #f4caa3;
+}
+
+.toc-cute li:last-child {
+  border-bottom: none;
+}
+
+.toc-cute .num {
+  background: #ffd6a5; /* 柔らかいオレンジ */
+  color: #8b4513; /* ダークブラウン */
+  font-weight: 700;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 18px;
+  box-shadow: 0 2px 5px rgba(255, 182, 100, 0.5);
+  flex-shrink: 0;
+  font-size: 18px;
+  user-select: none;
+}
+
+.toc-cute a {
+  color: #5a6d8c; /* くすみブルー */
+  font-weight: 600;
+  text-decoration: none;
+  flex-grow: 1;
+  transition: color 0.3s ease;
+}
+
+.toc-cute a:hover {
+  color: #f08a5d; /* オレンジっぽいアクセント */
+  text-decoration: underline;
+}
+
+.toc-cute .icon {
+  background: #f08a5d;
+  color: white;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  margin-left: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(240, 138, 93, 0.5);
+  flex-shrink: 0;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.toc-cute .icon:hover {
+  background: #d46e3f;
+}
+:root {
+  /* Light mode colors */
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --link-color: #007acc;
+  --header-bg: linear-gradient(135deg, #6ec1e4, #007acc);
+  --footer-bg: #000000;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Example for links */
+a {
+  color: var(--link-color);
+}
+
+header {
+  background: var(--header-bg);
+}
+
+/* Footer */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--text-color);
+}
+
+/* Dark mode overrides */
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --link-color: #66aaff;
+  --header-bg: linear-gradient(135deg, #1e3c72, #2a5298);
+  --footer-bg: #222222;
+}
